@@ -12,6 +12,7 @@ export default function Notion() {
   const getNotionToken = async (code: string) => {
     const headers = {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_DISCORD_ACCESS_TOKEN}`,
+      provider: "discord",
     };
     const body = {
       code: code,

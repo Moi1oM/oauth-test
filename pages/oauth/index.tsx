@@ -13,6 +13,7 @@ export default function Oauth() {
     try {
       const headers = {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_DISCORD_ACCESS_TOKEN}`,
+        provider: "discord",
       };
       const res = await axios.post(
         "http://localhost:8000/v1/user-tools/google",
