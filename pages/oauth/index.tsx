@@ -8,6 +8,9 @@ export default function Oauth() {
   const [notionLink, setNotionLink] = useState(
     process.env.NEXT_PUBLIC_NOTION_OAUTH_LINK
   );
+  const [slackLink, setSlackLink] = useState(
+    process.env.NEXT_PUBLIC_SLACK_OAUTH_LINK
+  );
 
   const getGoogleOAuth = async () => {
     try {
@@ -38,6 +41,9 @@ export default function Oauth() {
       <button onClick={() => push(notionLink!)}>Notion</button>
       <br />
       <button onClick={getGoogleOAuth}>Google</button>
+      <br />
+      <button onClick={() => push(slackLink!)}>Slack</button>
+      <br />
     </>
   );
 }
