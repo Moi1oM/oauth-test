@@ -11,6 +11,9 @@ export default function Oauth() {
   const [slackLink, setSlackLink] = useState(
     process.env.NEXT_PUBLIC_SLACK_OAUTH_LINK
   );
+  const [githubLink, setGithubLink] = useState(
+    process.env.NEXT_PUBLIC_GITHUB_OAUTH_LINK
+  );
 
   const getGoogleOAuth = async () => {
     try {
@@ -44,6 +47,7 @@ export default function Oauth() {
       <br />
       <button onClick={() => push(slackLink!)}>Slack</button>
       <br />
+      <button onClick={() => push(githubLink!)}>Github</button>
     </>
   );
 }
