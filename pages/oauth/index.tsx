@@ -18,6 +18,26 @@ export default function Oauth() {
     process.env.NEXT_PUBLIC_TWITTER_OAUTH_LINK
   );
 
+  const setCookie = (name: string, value: string, days: number) => {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  };
+
+  const getRandomString = () => {
+    const randomString =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+
+    setCookie("randomString", randomString, 1); // Sets cookie to expire in 1 day
+    console.log(document.cookie);
+
+    return randomString;
+  };
   const getGoogleOAuth = async () => {
     try {
       const headers = {
@@ -52,7 +72,9 @@ export default function Oauth() {
       <br />
       <button onClick={() => push(githubLink!)}>Github</button>
       <br />
-      <button onClick={() => push(twitterLink!)}>Twitter</button>
+      <button onClick={() => push(twitterLink! + getRandomString())}>
+        Twitter
+      </button>
     </>
   );
 }
