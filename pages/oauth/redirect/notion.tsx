@@ -11,7 +11,7 @@ export default function Notion() {
 
   const getNotionToken = async (code: string) => {
     const headers = {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_DISCORD_ACCESS_TOKEN}`,
+      Authorization: "Bearer discord token",
       provider: "discord",
     };
     const body = {
@@ -21,10 +21,11 @@ export default function Notion() {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:8000/v1/user-tools/notion",
+        url: "http://localhost:3001/user-tools/notion",
         headers: headers,
         data: body,
       });
+      console.log(response.data);
       setAccessToken(response.data.data.access_token);
     } catch (error: any) {
       console.error(

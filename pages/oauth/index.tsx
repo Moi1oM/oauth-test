@@ -14,6 +14,9 @@ export default function Oauth() {
   const [githubLink, setGithubLink] = useState(
     process.env.NEXT_PUBLIC_GITHUB_OAUTH_LINK
   );
+  const [twitterLink, setTwitterLink] = useState(
+    process.env.NEXT_PUBLIC_TWITTER_OAUTH_LINK
+  );
 
   const getGoogleOAuth = async () => {
     try {
@@ -48,6 +51,8 @@ export default function Oauth() {
       <button onClick={() => push(slackLink!)}>Slack</button>
       <br />
       <button onClick={() => push(githubLink!)}>Github</button>
+      <br />
+      <button onClick={() => push(twitterLink!)}>Twitter</button>
     </>
   );
 }
